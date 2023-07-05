@@ -2,14 +2,10 @@
 .stars {
 	--star-size: 30px;
 	display: flex;
-
-	.star + .star {
-		padding-left: 10px;
-		width: calc(var(--star-size) + 10px);
-	}
 }
 .star {
-	width: var(--star-size);
+	padding-inline: 5px;
+	width: calc(var(--star-size) + 10px);
 	height: var(--star-size);
 
 	path {
