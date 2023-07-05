@@ -1,0 +1,61 @@
+//init
+.stars {
+	--star-size: 30px;
+	display: flex;
+
+	.star + .star {
+		margin-left: 10px;
+	}
+}
+.star {
+	width: var(--star-size);
+	height: var(--star-size);
+
+	path {
+		stroke: var(--dark);
+	}
+}
+
+//Hover interactions
+.stars-rate .star,
+.stars-rate .star:hover ~ .star {
+	path {
+		fill: var(--default-star-fill);
+		transition: fill 200ms;
+		transition-delay: 0s;
+	}
+}
+.stars-rate:hover .star > path {
+	fill: var(--color-hover);
+}
+@for $i from 1 through 4 {
+	.stars-rate:hover .star:nth-child(#{$i + 1}) > path {
+		transition-delay: #{40 * $i}ms;
+	}
+}
+
+//Click interactions
+.stars-rate .star.reached {
+	path {
+		fill: var(--fill-color); //fill-color inject by javascript
+	}
+}
+
+//Enter anim
+.total-stars {
+	@for $i from 1 through 5 {
+		.star:nth-child(#{$i}) {
+			animation: star-reveal ease-in-out 250ms #{$i * 50}ms both;
+		}
+	}
+	@keyframes star-reveal {
+		0% {
+			opacity: 0;
+			transform: translateY(15px);
+		}
+		100% {
+			opacity: 1;
+			transform: translateY(0);
+		}
+	}
+}
