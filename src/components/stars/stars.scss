@@ -4,7 +4,8 @@
 	display: flex;
 
 	.star + .star {
-		margin-left: 10px;
+		padding-left: 10px;
+		width: calc(var(--star-size) + 10px);
 	}
 }
 .star {
